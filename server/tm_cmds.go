@@ -47,7 +47,7 @@ func ShowValidatorCmd(ctx *Context) *cobra.Command {
 			UpgradeOldPrivValFile(cfg)
 			privValidator := pvm.LoadOrGenFilePV(
 				cfg.PrivValidatorKeyFile(), cfg.PrivValidatorStateFile())
-			valPubKey := privValidator.GetPubKey()
+			valPubKey, _ := privValidator.GetPubKey()
 
 			if viper.GetString(cli.OutputFlag) == "json" {
 				return printlnJSON(valPubKey)
